@@ -26,8 +26,9 @@ You can check if the nodes are registered using dig.
 ```dig @0.0.0.0 -p 53 INSTANCEHOSTNAME.node.consul```
 
 
-Additionally you can tunnel the port to your local machine. 
+### UI ###
 
-```ssh 8500:localhost:8500 user@awsinstance```
+Ui should be available at ```http://awsinstanceip:8500/ui``` 
 
-This will allow you to access the ui using ```http://localhost:8500/ui```
+Alternatively open the tunnel to the instance ```ssh -LnN 8500:localhost:8500 user@awsinstance``` so the ui can be available on your local host  ```http://localhost:8500/ui```. It's potentially useful for services development wehere you need the consul cluster available locally.
+

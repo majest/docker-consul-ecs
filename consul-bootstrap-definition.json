@@ -1,0 +1,59 @@
+{
+    "containerDefinitions": [{
+        "essential": true,
+        "cpu": 20,
+        "memory": 128,
+        "image": "majest/docker-consul-ecs:latest",
+        "name": "consul-bootstrap",
+        "mountPoints": [{
+            "containerPath": "/data",
+            "sourceVolume": "consuldata",
+            "readOnly": false
+        }],
+        "environment": [{
+            "name": "CONSUL_PARAMS",
+            "value": "-bootstrap"
+        }],
+        "portMappings": [{
+            "containerPort": 8300,
+            "hostPort": 8300,
+            "protocol": "tcp"
+        }, {
+            "containerPort": 8301,
+            "hostPort": 8301,
+            "protocol": "tcp"
+        }, {
+            "containerPort": 8301,
+            "hostPort": 8301,
+            "protocol": "udp"
+        }, {
+            "containerPort": 8302,
+            "hostPort": 8302,
+            "protocol": "tcp"
+        }, {
+            "containerPort": 8400,
+            "hostPort": 8400,
+            "protocol": "tcp"
+        }, {
+            "containerPort": 8500,
+            "hostPort": 8500,
+            "protocol": "tcp"
+        }, {
+            "containerPort": 8600,
+            "hostPort": 53,
+            "protocol": "udp"
+        }],
+        "dnsServers": [
+            "172.17.0.1",
+            "8.8.8.8"
+        ],
+        "dnsSearchDomains": ["service.consul"]
+    }],
+    "family": "consul-bootstrap",
+    "volumes": [{
+        "host": {
+            "sourcePath": "/opt/rtc/consul"
+        },
+        "name": "consuldata"
+    }]
+}

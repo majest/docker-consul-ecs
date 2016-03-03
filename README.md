@@ -24,3 +24,10 @@ Task definitions include dns server ip. Make sure it's correct for your environm
 You can check if the nodes are registered using dig.
 
 ```dig @0.0.0.0 -p 53 INSTANCEHOSTNAME.node.consul```
+
+
+Additionally you can tunnel the port to your local machine. 
+
+```ssh 8500:localhost:8500 user@awsinstance```
+
+This will allow you to access the ui using ```http://localhost:8500/ui```

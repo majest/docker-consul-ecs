@@ -45,8 +45,15 @@
         ],
         "environment": [{
             "name": "CONSUL_PARAMS",
-            "value": "-join=__INTERNALELB__"
-        }],
+            "value": "-bootstrap-expect 3"
+        }, {
+            "name": "EC2_TAG_KEY",
+            "value": "__TAGKEY__"
+        }, {
+            "name": "EC2_TAG_VALUE",
+            "value": "__TAGVALUE__"
+        }
+      ],
         "dnsSearchDomains": ["service.consul"]
     }],
     "family": "consul-server",
